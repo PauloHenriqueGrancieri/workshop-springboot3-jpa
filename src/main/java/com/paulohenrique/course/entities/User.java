@@ -39,6 +39,13 @@ public class User implements Serializable {
     @Setter(AccessLevel.PRIVATE)
     private List<Order> orders = new ArrayList<>();
 
+    public User(String name, String email, String phone, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
