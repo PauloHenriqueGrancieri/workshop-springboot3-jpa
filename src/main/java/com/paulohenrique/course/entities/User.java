@@ -1,5 +1,6 @@
 package com.paulohenrique.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     @Setter(AccessLevel.PRIVATE)
     private List<Order> orders = new ArrayList<>();
