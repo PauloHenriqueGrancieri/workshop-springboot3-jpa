@@ -1,5 +1,6 @@
 package com.paulohenrique.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,8 @@ public class Category implements Serializable {
     private String name;
 
     @Setter(AccessLevel.NONE)
-    @Transient
+    @ManyToMany(mappedBy = "categories")
+    @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
     public Category(String name) {
