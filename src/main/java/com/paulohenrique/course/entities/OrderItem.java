@@ -1,11 +1,11 @@
 package com.paulohenrique.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.paulohenrique.course.entities.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +18,8 @@ import java.util.Objects;
 public class OrderItem {
 
     @EmbeddedId
-    private OrderItemPK id;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
 
@@ -31,13 +32,15 @@ public class OrderItem {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
     public void setOrder(Order order){
         id.setOrder(order);
     }
-    public Product getProduct(){
+
+    public Product getProduct() {
         return id.getProduct();
     }
     public void setProduct(Product product){
