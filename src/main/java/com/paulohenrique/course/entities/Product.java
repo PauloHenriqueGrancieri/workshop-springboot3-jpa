@@ -19,19 +19,14 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
     private Double price;
 
-    @Column(name = "imgUrl")
     private String imgUrl;
 
     @Setter(AccessLevel.NONE)

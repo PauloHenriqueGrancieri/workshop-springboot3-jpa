@@ -17,11 +17,9 @@ import java.util.Set;
 public class Category implements Serializable {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(name = "name")
     private String name;
 
     @Setter(AccessLevel.NONE)
